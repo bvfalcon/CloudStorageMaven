@@ -149,7 +149,8 @@ public class AzureStorageRepository {
     }
 
     public void disconnect() {
-        blobContainer = null;
+        // don't disconnect after each module
+//        blobContainer = null;
     }
 
 }

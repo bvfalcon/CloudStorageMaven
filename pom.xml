@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.barrypitman</groupId>
     <artifactId>cloud-storage-maven</artifactId>
     <packaging>pom</packaging>
-    <version>2.3.1</version>
-  
+    <version>2.3.2</version>
+
     <name>Cloud Storage</name>
-    <description>The CloudStorage project enables you to use the storage options of cloud provides (Google Cloud) storage as maven repositories.</description>
+    <description>The CloudStorage project enables you to use the storage options of cloud provides (Google Cloud)
+        storage as maven repositories.
+    </description>
     <url>https://github.com/barrypitman/CloudStorage</url>
 
     <licenses>
@@ -39,8 +42,8 @@
         <url>https://github.com/barrypitman/CloudStorage</url>
         <connection>scm:git:https://github.com/barrypitman/CloudStorage.git</connection>
         <developerConnection>scm:git:https://github.com/barrypitman/CloudStorage.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <wagon.version>3.0.0</wagon.version>
@@ -62,7 +65,7 @@
             <name>Nexus Release Repository</name>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <downloadUrl>https://s01.oss.sonatype.org/content/groups/public/org/knowm/xchart</downloadUrl>
+        <downloadUrl>https://oss.sonatype.org/content/groups/public/org/knowm/xchart</downloadUrl>
     </distributionManagement>
 
     <build>
