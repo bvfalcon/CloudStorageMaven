@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-storage-maven</artifactId>
-        <groupId>com.gkatzioura.maven.cloud</groupId>
-        <version>2.3</version>
+        <groupId>io.github.barrypitman</groupId>
+        <version>2.3.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
     <description>Azure blob storage wagon</description>
 
     <properties>
-        <azure-storage.version>7.0.0</azure-storage.version>
+        <azure-storage.version>12.16.0</azure-storage.version>
     </properties>
 
     <licenses>
@@ -37,13 +37,19 @@
             <version>${maven.plugin.api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.azure/azure-storage-blob -->
         <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-storage</artifactId>
-            <version>${azure-storage.version}</version>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.16.0</version>
         </dependency>
         <dependency>
-            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.barrypitman</groupId>
             <artifactId>cloud-storage-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
@@ -71,7 +77,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.6.4</version>
                 <executions>
                     <execution>
                         <id>default-descriptor</id>

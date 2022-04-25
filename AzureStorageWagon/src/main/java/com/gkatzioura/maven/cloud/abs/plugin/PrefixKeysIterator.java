@@ -1,22 +1,24 @@
 package com.gkatzioura.maven.cloud.abs.plugin;
 
+import com.azure.storage.blob.BlobContainerClient;
+import com.azure.storage.blob.models.BlobItem;
+import com.azure.storage.blob.models.ListBlobsOptions;
+
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-import com.microsoft.azure.storage.blob.CloudBlobContainer;
-import com.microsoft.azure.storage.blob.ListBlobItem;
+public class PrefixKeysIterator implements Iterator<BlobItem> {
 
-public class PrefixKeysIterator implements Iterator<ListBlobItem> {
-
-    private final CloudBlobContainer cloudBlobContainer;
+    private final BlobContainerClient cloudBlobContainer;
     private final String prefix;
 
-    private final Iterator<ListBlobItem> tempListing;
+    private final Iterator<BlobItem> tempListing;
 
-    public PrefixKeysIterator(final CloudBlobContainer cloudBlobContainer, final String prefix) {
+    public PrefixKeysIterator(final BlobContainerClient cloudBlobContainer, final String prefix) {
         this.cloudBlobContainer = cloudBlobContainer;
         this.prefix = prefix;
-        tempListing = cloudBlobContainer.listBlobs(prefix,true).iterator();
+        this.tempListing = cloudBlobContainer.listBlobs(new ListBlobsOptions().setPrefix(prefix), Duration.ofMinutes(1)).iterator();
     }
 
     @Override
@@ -25,7 +27,7 @@ public class PrefixKeysIterator implements Iterator<ListBlobItem> {
     }
 
     @Override
-    public ListBlobItem next() {
+    public BlobItem next() {
         return tempListing.next();
     }
 
@@ -35,7 +37,7 @@ public class PrefixKeysIterator implements Iterator<ListBlobItem> {
     }
 
     @Override
-    public void forEachRemaining(Consumer<? super ListBlobItem> action) {
+    public void forEachRemaining(Consumer<? super BlobItem> action) {
         throw new UnsupportedOperationException();
     }
 }

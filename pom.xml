@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gkatzioura.maven.cloud</groupId>
+    <groupId>io.github.barrypitman</groupId>
     <artifactId>cloud-storage-maven</artifactId>
     <packaging>pom</packaging>
-    <version>2.3</version>
+    <version>2.3.1</version>
   
     <name>Cloud Storage</name>
     <description>The CloudStorage project enables you to use the storage options of cloud provides (Google Cloud) storage as maven repositories.</description>
-    <url>https://github.com/gkatzioura/CloudStorage</url>
+    <url>https://github.com/barrypitman/CloudStorage</url>
 
     <licenses>
         <license>
@@ -26,12 +26,19 @@
             <organization>egkatzioura</organization>
             <organizationUrl>https://egkatzioura.com/</organizationUrl>
         </developer>
+        <developer>
+            <name>Barry Pitman</name>
+            <email>barrypitman@gmail.com</email>
+            <organization>Ubiquitech</organization>
+            <organizationUrl>https://ubiquitech.co.za/</organizationUrl>
+        </developer>
+
     </developers>
 
     <scm>
-        <url>https://github.com/gkatzioura/CloudStorage</url>
-        <connection>scm:git:https://github.com/gkatzioura/CloudStorage.git</connection>
-        <developerConnection>scm:git:https://github.com/gkatzioura/CloudStorage.git</developerConnection>
+        <url>https://github.com/barrypitman/CloudStorage</url>
+        <connection>scm:git:https://github.com/barrypitman/CloudStorage.git</connection>
+        <developerConnection>scm:git:https://github.com/barrypitman/CloudStorage.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
 
@@ -95,20 +102,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.4.2</version>
                 <configuration>
@@ -127,4 +120,29 @@
         <module>S3StorageWagon</module>
     </modules>
 
+    <profiles>
+        <profile>
+            <id>deploy</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
 </project>

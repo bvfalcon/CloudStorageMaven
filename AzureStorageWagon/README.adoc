@@ -1,0 +1,38 @@
+= AzureStorageWagon
+
+The AzureStorageWagon project enables you to upload your artifacts to an Azure Blob storage account. The original blog post on this subject is here: https://egkatzioura.com/2018/04/09/host-your-maven-artifacts-using-azure-blob-storage/
+
+== Instructions
+
+Add the wagon dependency to your pom.xml file as a build extension.
+----
+<build>
+    <extensions>
+        <extension>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>azure-storage-wagon</artifactId>
+            <version>1.8</version>
+        </extension>
+    </extensions>
+</build>
+----
+
+== Authentication methods
+
+You can authenticate to Azure using 3 different methods:
+
+=== Access keys
+This is the original solution. In settings.xml, the username should contain the storage account name, and the password should contain a storage account access key. The disadvantage to this approach is that storage account keys allow for complete control over the entire storage account. Most users only require READ access.
+
+=== Shared access signatures
+To use shared access signatures, specify the shared access signature in the settings.xml username field, and leave the password empty. SAS give a better level of control compared to access keys, and can be scoped to particular directories, and restricted to read-only access where required. However, this solution might not scale well to many users, since SAS tokens cannot be revoked without rotating access keys and invalidating all SAS signatures.
+
+=== Azure AD using service principal
+If your storage account uses Azure AD for authentication (https://docs.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory), then you can also use a service principal for authentication. To use Azure AD authentication the fields in settings.xml should be configured as follows:
+
+- username: client_id
+- password: client_secret
+- passphrase: tenant_id
+- privateKey: endpoint (e.g. https://<name>.blob.core.windows.net)
+
+This will allow you manage access to the repo using Azure RBAC.
