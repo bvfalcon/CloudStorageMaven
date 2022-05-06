@@ -20,8 +20,7 @@
             <role>org.apache.maven.wagon.Wagon</role>
             <role-hint>bs</role-hint>
             <implementation>com.gkatzioura.maven.cloud.abs.AzureStorageWagon</implementation>
-            <!-- per-lookup is quite expensive when each lookup acquires a new token -->
-            <instantiation-strategy>singleton</instantiation-strategy>
+            <instantiation-strategy>per-lookup</instantiation-strategy>
         </component>
     </components>
 </component-set>
