@@ -3,7 +3,7 @@
     <parent>
         <artifactId>cloud-storage-maven</artifactId>
         <groupId>io.github.barrypitman</groupId>
-        <version>2.3.4</version>
+        <version>2.3.5-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,7 +12,7 @@
     <description>S3 storage wagon</description>
 
     <properties>
-        <aws.version>1.11.743</aws.version>
+        <aws.version>1.12.305</aws.version>
         <httpcore>4.4.10</httpcore>
         <powermock.version>1.7.1</powermock.version>
     </properties>
@@ -99,7 +99,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.6.4</version>
                 <executions>
                     <execution>
                         <id>default-descriptor</id>

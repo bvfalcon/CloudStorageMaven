@@ -41,6 +41,10 @@ public class PrefixKeysIterator implements Iterator<String> {
         this.prefix = prefix;
     }
 
+    public String getPrefix() {
+        return this.prefix;
+    }
+
     @Override
     public void remove() {
         throw new UnsupportedOperationException();

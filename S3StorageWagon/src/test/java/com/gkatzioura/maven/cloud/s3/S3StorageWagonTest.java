@@ -35,11 +35,6 @@ public class S3StorageWagonTest extends WagonTestCase {
         return "s3";
     }
 
-    @Override
-    protected int getTestRepositoryPort() {
-        return 0;
-    }
-
     //TODO se tit to true and fix the failing tests
     protected boolean supportsGetIfNewer()
     {
